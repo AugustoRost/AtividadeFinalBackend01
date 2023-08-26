@@ -5,7 +5,7 @@ app.use(express.json());
 
 const usuarios = [];
 const mensagens = [];
-
+//cadastro
 app.post("/cadastro", (req, res) => {
   const { nome, email, senha } = req.body;
   const emailJaUtilizado = usuarios.find(
@@ -30,7 +30,7 @@ app.post("/cadastro", (req, res) => {
     usuarios: novoUsuario,
   });
 });
-
+//login
 app.post("/login", (req, res) => {
   const { senha, email } = req.body;
 
@@ -52,7 +52,7 @@ app.post("/login", (req, res) => {
     message: "Login realizado com sucesso",
   });
 });
-
+//mensagem
 app.post("/mensagem", (req, res) => {
   const { titulo, texto, idUsuario } = req.body;
   const usuarioEncontrado = usuarios.find(
@@ -77,7 +77,7 @@ app.post("/mensagem", (req, res) => {
     mensagemNova,
   });
 });
-
+//lista mensagem
 app.get("/mensagem/:idUsuario", (req, res) => {
   const { idUsuario } = req.params;
   const usuarioEncontrado = usuarios.find(
@@ -92,5 +92,46 @@ app.get("/mensagem/:idUsuario", (req, res) => {
     (mensagem) => mensagem.idUsuario === idUsuario
   );
   res.status(200).json(mensagemUsuario);
+});
+//atualizar mensagem
+app.put("/mensagem/:idMensagem", (req, res) => {
+  const { idMensagem } = req.params;
+  const { titulo, texto } = req.body;
+
+  const mensagemIndex = mensagens.findIndex(
+    (mensagem) => mensagem.id === idMensagem
+  );
+  if (mensagemIndex === -1) {
+    return res.status(404).json({
+      message: "Mensagem não encontrada",
+    });
+  }
+
+  mensagens[mensagemIndex].titulo = titulo || mensagens.titulo;
+  mensagens[mensagemIndex].texto = texto || mensagens.texto;
+
+  res.status(200).json({
+    message: "Mensagem atualizada",
+  });
+});
+//deletar mensagem
+app.delete("/mensagens/:idMensagem", (req, res) => {
+  const { idMensagem } = req.params;
+  const mensagemIndex = mensagens.findIndex(
+    (mensagem) => mensagem.id === idMensagem
+  );
+
+  if (idMensagem === -1) {
+    return res.status(404).json({
+      message: "Mensagem não encontrada!!",
+    });
+  }
+
+  const deletarMensagem = mensagens.splice(mensagemIndex, 1);
+
+  res.status(200).json({
+    message: "Mensagem Excluida!!",
+    deletarMensagem,
+  });
 });
 app.listen(8080, () => console.log("Servidor iniciado!!"));
