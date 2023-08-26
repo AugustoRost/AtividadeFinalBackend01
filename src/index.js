@@ -52,4 +52,45 @@ app.post("/login", (req, res) => {
     message: "Login realizado com sucesso",
   });
 });
+
+app.post("/mensagem", (req, res) => {
+  const { titulo, texto, idUsuario } = req.body;
+  const usuarioEncontrado = usuarios.find(
+    (usuario) => usuario.id === idUsuario
+  );
+
+  if (!usuarioEncontrado) {
+    return res.status(404).json({
+      message: "Usuario não encontrado",
+    });
+  }
+
+  const mensagemNova = {
+    id: uuidv4(),
+    titulo,
+    texto,
+    idUsuario,
+  };
+  mensagens.push(mensagemNova);
+  res.status(201).json({
+    message: "Mensagem adicionada no perfil.",
+    mensagemNova,
+  });
+});
+
+app.get("/mensagem/:idUsuario", (req, res) => {
+  const { idUsuario } = req.params;
+  const usuarioEncontrado = usuarios.find(
+    (usuario) => usuario.id === idUsuario
+  );
+  if (!usuarioEncontrado) {
+    return res.status(404).json({
+      message: "Usuario não encontrado!!!!!",
+    });
+  }
+  const mensagemUsuario = mensagens.find(
+    (mensagem) => mensagem.idUsuario === idUsuario
+  );
+  res.status(200).json(mensagemUsuario);
+});
 app.listen(8080, () => console.log("Servidor iniciado!!"));
