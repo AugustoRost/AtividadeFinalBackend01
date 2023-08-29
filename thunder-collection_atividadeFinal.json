@@ -1,0 +1,113 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "atividadeFinal",
+    "dateExported": "2023-08-29T01:00:47.481Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "08c3d194-c9aa-40dc-9226-6da22c888311",
+            "colId": "ec60f032-8bf1-432e-a690-7033ff832193",
+            "containerId": "",
+            "name": "cadastro",
+            "url": "localhost:8080/cadastro",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-08-26T20:27:02.042Z",
+            "modified": "2023-08-26T20:27:19.958Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nome\": \"Augusto\",\n  \"email\": \"jdiasjida@hotmail.com\",\n  \"senha\": \"123456\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "835f08f6-d42f-414a-a512-0ad0a3e4d17d",
+            "colId": "ec60f032-8bf1-432e-a690-7033ff832193",
+            "containerId": "",
+            "name": "login",
+            "url": "localhost:8080/login",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2023-08-26T20:27:38.746Z",
+            "modified": "2023-08-26T20:28:13.916Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"jdiasjida@hotmail.com\",\n  \"senha\": \"123456\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "c6f487e3-72f0-4612-86c3-ba0edfdfeecc",
+            "colId": "ec60f032-8bf1-432e-a690-7033ff832193",
+            "containerId": "",
+            "name": "criar mensagem",
+            "url": "localhost:8080/mensagem",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2023-08-26T20:28:42.682Z",
+            "modified": "2023-08-26T20:36:09.760Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"titulo\": \"teste 1252\",\n  \"texto\": \"Isso é um teste\",\n  \"idUsuario\": \"c10eee91-4f19-4291-8f6d-fd98d2d57072\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "9e2014ff-47bf-44cd-a7b2-d8912e81d47d",
+            "colId": "ec60f032-8bf1-432e-a690-7033ff832193",
+            "containerId": "",
+            "name": "listando",
+            "url": "localhost:8080/mensagem/c10eee91-4f19-4291-8f6d-fd98d2d57072",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2023-08-26T20:31:02.723Z",
+            "modified": "2023-08-26T20:36:28.910Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "233f4e8f-16a6-47dd-8eaf-554b9c5db13d",
+            "colId": "ec60f032-8bf1-432e-a690-7033ff832193",
+            "containerId": "",
+            "name": "atualizar mensagem",
+            "url": "localhost:8080/mensagem/48647c0c-0779-413c-9e96-f11722dc93eb",
+            "method": "PUT",
+            "sortNum": 60000,
+            "created": "2023-08-26T20:32:21.171Z",
+            "modified": "2023-08-26T20:36:40.826Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"titulo\": \"novo titulo\",\n  \"texto\": \"novo texto\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "232b0c26-5d7c-4947-815c-78b43317da9a",
+            "colId": "ec60f032-8bf1-432e-a690-7033ff832193",
+            "containerId": "",
+            "name": "deletar mensagem",
+            "url": "localhost:8080/mensagens/48647c0c-0779-413c-9e96-f11722dc93eb",
+            "method": "DELETE",
+            "sortNum": 80000,
+            "created": "2023-08-26T20:37:33.156Z",
+            "modified": "2023-08-26T20:39:30.379Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}
